@@ -46,4 +46,4 @@ Thumbs.db
 
 
 # Users Files
-my-second-app/src/enviroments/*
+/src/environments/*
