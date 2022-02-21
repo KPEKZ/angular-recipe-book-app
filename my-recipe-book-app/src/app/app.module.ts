@@ -7,7 +7,9 @@ import {CoreModule} from "./core.module";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Header/header.component';
 import {StoreModule} from "@ngrx/store";
-import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
+import * as fromApp from './store/app.reducer';
+import {EffectsModule} from "@ngrx/effects";
+import {AuthEffects} from "./Auth/store/auth.effects";
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import {shoppingListReducer} from "./shopping-list/store/shopping-list.reducer";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducer}),
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects]),
     SharedModule,
     CoreModule
   ],
