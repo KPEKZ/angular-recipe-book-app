@@ -6,15 +6,16 @@ export const AUTHENTICATE_FAIL = '[Auth] Login Fail';
 export const LOGOUT = '[Auth] Logout';
 export const SIGNUP_START = '[Auth] Signup Start';
 export const CLEAR_ERROR = '[Auth] Clear Error';
+export const AUTO_LOGIN = '[Auth] Auto Login';
 
 export class AuthenticateSuccess implements Action {
     readonly type = AUTHENTICATE_SUCCESS;
-
     constructor(public payload: {
         email:string;
         userId:string;
         token:string;
         expirationDate: Date;
+        redirect: boolean
     }) {}
 }
 
@@ -42,10 +43,15 @@ export class ClearError implements Action {
 
 }
 
+export class AutoLogin implements Action {
+  readonly type = AUTO_LOGIN;
+}
+
 export type AuthActions = 
-AuthenticateSuccess | 
-Logout | 
-LoginStart | 
-AuthenticateFail |
-SignupStart |
-ClearError;
+| AuthenticateSuccess 
+| Logout  
+| LoginStart 
+| AuthenticateFail
+| SignupStart
+| ClearError
+| AutoLogin;
