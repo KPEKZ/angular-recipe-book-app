@@ -9,7 +9,8 @@ import { User } from '../Auth/user.model';
 
 @Component({
     selector: 'app-header',
-    templateUrl: './header.component.html'
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
 
 export class HeaderComponent implements OnInit, OnDestroy{
@@ -35,12 +36,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   onSaveData() {
-    //this.dataStorageService.storeRecipes();
     this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
   onFetchData() {
-    //this.dataStorageService.fetchRecipes().subscribe();
     this.store.dispatch(new RecipeActions.FetchRecipes());
   }
 

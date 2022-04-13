@@ -1,14 +1,12 @@
-<div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success" (click)="onNewRecipe()" >New Recipe</button>
-    </div>
-</div>
-<hr>
-<div class="row"> 
-    <div class="col-xs-12">
-        <app-recipe-item 
-        *ngFor="let recipeEl of recipes; let i = index" 
-        [recipe]="recipeEl"
-        [index]="i"></app-recipe-item>
-    </div>
-</div>
+<section class="recipes-list">
+  <h2>Create a recipe</h2>
+  <button class="recipes-list__button" mat-raised-button color="primary"
+    (click)="onNewRecipe()">New Recipe
+  </button>
+  <div class="recipes-list__content">
+    <app-recipe-item *ngFor="let recipeEl of recipes; let i = index"
+      [recipe]="recipeEl"
+      [index]="i">
+    </app-recipe-item>
+  </div>
+</section>

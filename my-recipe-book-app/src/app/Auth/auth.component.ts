@@ -11,10 +11,12 @@ import * as AuthActions from './store/auth.actions';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 
 export class AuthComponent implements OnInit, OnDestroy{
+  hide = true;
   isLoginMode: Boolean = true;
   isLoading : Boolean = false;
   error:string = null;
@@ -74,7 +76,6 @@ export class AuthComponent implements OnInit, OnDestroy{
   }
 
   private showErrorAlert(message:string) {
-   // const alertCmp = new AlertComponent();
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     const hostViewContainerRef = this.alertHost.viewConainerRef;
     hostViewContainerRef.clear();

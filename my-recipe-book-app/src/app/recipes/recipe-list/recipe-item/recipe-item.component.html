@@ -1,13 +1,14 @@
-<a
-style="cursor: pointer;"
-class="list-group-item  d-flex justify-content-between flex-row mb-3 shadow-sm"
-[routerLink]="[index]"
-[routerLinkActive]="['active']" >
-    <div class="">
-        <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-        <p class="list-group-item-text">{{recipe.description}}</p>
-    </div>
-    <span class="align-self-center">
-        <img src="{{recipe.imagePath}}" alt="{{recipe.name}}" class="img-responsive" style="max-height:60px;max-width: 60px;">
-    </span>
-</a>
+<mat-card [routerLink]="[index]" [routerLinkActive]="['active']"
+  class="recipe-card-item recipe-card-item__background-color__primary recipe-card-item__font-color__white">
+  <mat-card-header>
+    <mat-card-title>
+      {{recipe.name}}
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{recipe.imagePath}}" alt="{{recipe.name}}">
+  <mat-card-content>
+    <p>
+      {{recipe.description}}
+    </p>
+  </mat-card-content>
+</mat-card>

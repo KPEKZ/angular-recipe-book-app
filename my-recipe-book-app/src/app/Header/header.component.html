@@ -1,35 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">Recipe Book</a>
-        </div>
-        <div class="collapse navbar-collapse justify-content-between">
-            <ul class="navbar-nav">
-                <li class="nav-item"  *ngIf="isAuthenticated"><a class="nav-link"
-                    routerLink="/recipes"
-                    routerLinkActive="active">Recipes</a></li>
-              <li class="nav-item"  *ngIf="!isAuthenticated"><a class="nav-link"
-                                      routerLink="/auth"
-                                      routerLinkActive="active">Authentication</a></li>
-                <li class="nav-item" *ngIf="isAuthenticated"><a class="nav-link"
-                    routerLink="/shopping-list"
-                    routerLinkActive="active">Shopping list</a></li>
-            </ul>
-            <ul class="navbar-nav">
-              <li  *ngIf="isAuthenticated">
-                <a style="cursor: pointer;" class="nav-link" (click)="onLogout()" >Logout</a>
-              </li>
-                <li class="dropdown nav-item"  *ngIf="isAuthenticated">
-                    <a class="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown" role="button"
-                    id="dropdownMenuLink" aria-expanded="false"
-                    (click)="onClassToggle(ulElement)">Manage <span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" #ulElement>
-                        <li><a style="cursor: pointer;" class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
-                        <li><a style="cursor: pointer;"  class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<mat-toolbar class="header" color="primary">
+  <span class="header-brand" >Recipe Book</span>
+  <mat-list class="header-navigation">
+    <mat-list-item *ngIf="isAuthenticated">
+      <a class="navigation-link" mat-button routerLink="/recipes" routerLinkActive="active">Recipes</a>
+    </mat-list-item>
+    <mat-list-item *ngIf="!isAuthenticated">
+      <a class="navigation-link" mat-button routerLink="/auth" routerLinkActive="active">Authentication</a>
+    </mat-list-item>
+    <mat-list-item *ngIf="isAuthenticated">
+      <a class="navigation-link" mat-button routerLink="/shopping-list" routerLinkActive="active">Shopping list</a>
+    </mat-list-item>
+  </mat-list>
+  <mat-list class="header-control">
+    <mat-list-item>
+      <button class="button" mat-button (click)="onLogout()">Logout</button>
+    </mat-list-item>
+    <mat-list-item>
+      <button class="button" mat-button [matMenuTriggerFor]="beforeMenu">Manage</button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="onSaveData()">Save Data</button>
+        <button mat-menu-item (click)="onFetchData()">Fetch Data</button>
+      </mat-menu>
+    </mat-list-item>
+  </mat-list>
+</mat-toolbar>

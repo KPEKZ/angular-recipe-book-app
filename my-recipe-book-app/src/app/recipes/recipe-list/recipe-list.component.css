@@ -1,0 +1,10 @@
+.recipes-list__content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.recipes-list__button {
+  margin-bottom: 20px;
+}
