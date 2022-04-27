@@ -9,7 +9,7 @@ import { map, Subscription } from 'rxjs';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css']
+  styleUrls: ['./recipe-edit.component.scss']
 })
 export class RecipeEditComponent implements OnInit, OnDestroy {
   id: number;
@@ -18,10 +18,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   private storeSub: Subscription;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private store: Store<fromApp.AppState>
-              ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private store: Store<fromApp.AppState>
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -51,7 +52,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode){
-     // const recipe = this.recipeService.getRecipe(this.id);
      this.storeSub = this.store.select('recipes')
      .pipe(
        map((recipesState)=>{
@@ -72,7 +72,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         }
       }
      });
-      
+
     }
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),

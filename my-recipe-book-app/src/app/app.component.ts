@@ -7,14 +7,14 @@ import * as AuthActions from './Auth/store/auth.actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
 
   constructor(
     private store: Store<fromApp.AppState>,
     @Inject(PLATFORM_ID) private platformId,
-    
+
   ) {}
 
   ngOnInit() {

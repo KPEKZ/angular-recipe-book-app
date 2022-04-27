@@ -9,7 +9,7 @@ import * as fromApp from '../store/app.reducer';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css'],
+  styleUrls: ['./shopping-list.component.scss'],
 
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
@@ -23,19 +23,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.ingredients = this.store.select('shoppingList');
-    // this.ingredients = this.slService.getIngredients();
-    // this.igChangeSub = this.slService.ingredientChanged.subscribe((ingredients: Ingredient[]) => {
-    //   this.ingredients = ingredients;
-    // });
   }
 
   onEditItem(index:number) {
-    //this.slService.startEditing.next(index);
     this.store.dispatch(new ShoppingListActions.StartEdit(index));
 
   }
   ngOnDestroy() {
-    //this.igChangeSub.unsubscribe();
   }
 
 }

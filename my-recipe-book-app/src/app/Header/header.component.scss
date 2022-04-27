@@ -1,0 +1,32 @@
+.header {
+    flex-basis: 100%;
+}
+
+.header-navigation {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+}
+
+.header-navigation mat-list-item {
+  width: auto;
+}
+
+.navigation-link {
+    color: #FFF;
+}
+
+.header-control {
+    padding: 0;
+    display: flex;
+    flex: 0 1 min-content;
+}
+
+.button {
+    color:#FFF;
+}
+
+.active {
+    background-color: #472583;
+}

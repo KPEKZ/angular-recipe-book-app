@@ -11,7 +11,7 @@ import * as fromApp from '../../store/app.reducer';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  styleUrls: ['./shopping-edit.component.scss']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f', {static:false}) slForm : NgForm;
@@ -36,22 +36,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         this.editMode = false;
       }
     });
-  // this.subscription =  this.slService.startEditing.subscribe((index: number)=>{
-  //   this.editMode = true;
-  //   this.editedItemIndex = index;
-  //   this.editedItem  = this.slService.getIngredient(index);
-  //   this.slForm.setValue({name: this.editedItem.name, amount: this.editedItem.amount});
-  // });
   }
 
   onSubmit(form: NgForm) {
     const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
-      //this.slService.updateIngredient(this.editedItemIndex, newIngredient);
       this.store.dispatch(new ShoppingListActions.UpdateIngredient(newIngredient));
     } else {
-      //this.slService.addIngredient(newIngredient);
       this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
     }
     this.editMode = false;
@@ -66,7 +58,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    //this.slService.deleteIngredient(this.editedItemIndex);
     this.store.dispatch(new ShoppingListActions.DeleteIngredient());
     this.onClear();
   }
