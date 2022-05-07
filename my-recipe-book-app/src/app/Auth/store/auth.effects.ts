@@ -122,19 +122,20 @@ export class AuthEffects {
           _tokenExpirationDate: string
         } = JSON.parse(localStorage.getItem('userData'));
 
+        console.log(userData._tokenExpirationDate);
+
         if (!userData) {
           return {type: 'EMPTY'};
         }
-    
+
         const loadedUser = new User(
           userData.email,
           userData.id,
           userData._token,
           new Date(userData._tokenExpirationDate)
         );
-    
+
         if (loadedUser.token) {
-         // this.user.next(loadedUser);
          const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
          this.authService.setLogoutTimer(expirationDuration);
           return new AuthActions.AuthenticateSuccess({
@@ -142,11 +143,8 @@ export class AuthEffects {
               userId: loadedUser.id,
               token: loadedUser.token,
               expirationDate: new Date(userData._tokenExpirationDate),
-              redirect: false
-            })
-          
-         
-          // this.autoLogout(expirationDuration);
+              redirect: true
+            });
         }
         return {type: 'EMPTY'};
       })
@@ -175,7 +173,7 @@ export class AuthEffects {
         if(authSuccessAction.payload.redirect){
           this.router.navigate(['/']);
         }
-        
+
       })
     );
   }, {

@@ -15,19 +15,20 @@ import { User } from '../Auth/user.model';
 
 export class HeaderComponent implements OnInit, OnDestroy{
 
-  isAuthenticated:Boolean = false;
-  private userSub: Subscription;
+  private _userSub: Subscription = null;
+  public isAuthenticated:Boolean = false;
 
   constructor(
-    private store: Store<fromApp.AppState>) {
-  }
+    private store: Store<fromApp.AppState>
+  ) {}
 
   ngOnInit() {
-    this.userSub = this.store.select('auth').pipe(
+    this._userSub = this.store.select('auth').pipe(
       map((authState: { user: User; }) => authState.user))
       .subscribe(user => {
       this.isAuthenticated = !! user;
     });
+    if (this._userSub) this.onFetchData();
   }
 
 
@@ -48,6 +49,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    this.userSub.unsubscribe();
+    if (this._userSub) {
+      this._userSub.unsubscribe();
+      this._userSub = null;
+    }
   }
 }

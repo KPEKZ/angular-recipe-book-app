@@ -22,4 +22,12 @@ describe('RecipeStartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be the header <h3>Please select a Recipe!</h3>', () => {
+    const recipeStartComponent: HTMLElement = fixture.debugElement.nativeElement;
+    const headerElement: HTMLHeadElement = recipeStartComponent.querySelector('h3');
+    expect(headerElement).toBeDefined();
+    expect(headerElement.textContent).toBe('Please select a Recipe!');
+  });
+
 });

@@ -16,11 +16,11 @@ import * as AuthActions from './store/auth.actions';
 })
 
 export class AuthComponent implements OnInit, OnDestroy{
-  hide = true;
-  isLoginMode: Boolean = true;
-  isLoading : Boolean = false;
-  error:string = null;
-  @ViewChild(PlaceholderDirective, {static:false}) alertHost: PlaceholderDirective;
+  public hide = true;
+  public isLoginMode: Boolean = true;
+  public isLoading : Boolean = false;
+  public error:string = null;
+  @ViewChild(PlaceholderDirective, {static:false}) public alertHost: PlaceholderDirective;
 
   private closeSub: Subscription;
   private storeSub: Subscription;

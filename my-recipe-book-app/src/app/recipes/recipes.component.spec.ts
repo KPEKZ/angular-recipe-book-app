@@ -22,4 +22,29 @@ describe('RecipesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have <div> with class <recipes-list>', () => {
+    const recipesComponent: HTMLElement = fixture.nativeElement;
+    const div = recipesComponent.querySelector('.resipes-list');
+    expect(div).toBeDefined();
+  });
+
+  it('should have <div> with class <recipes-detail>', () => {
+    const recipesComponent: HTMLElement = fixture.nativeElement;
+    const div = recipesComponent.querySelector('.recipes-detail');
+    expect(div).toBeDefined();
+  });
+
+  it('should have <div> with class <recipes-detail>', () => {
+    const recipesComponent: HTMLElement = fixture.nativeElement;
+    const div = recipesComponent.querySelector('.recipes-detail');
+    expect(div).toBeDefined();
+  });
+
+  it('should have <app-recipe-list> component', () => {
+    const recipesComponent: HTMLElement = fixture.nativeElement;
+    const appRecLst = recipesComponent.querySelector('app-recipe-list');
+    expect(appRecLst).toBeDefined();
+  });
+
 });

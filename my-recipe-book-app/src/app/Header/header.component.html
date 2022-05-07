@@ -15,7 +15,7 @@
     <mat-list-item>
       <button class="button" mat-button (click)="onLogout()">Logout</button>
     </mat-list-item>
-    <mat-list-item>
+    <mat-list-item *ngIf="isAuthenticated">
       <button class="button" mat-button [matMenuTriggerFor]="beforeMenu">Manage</button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <button mat-menu-item (click)="onSaveData()">Save Data</button>
