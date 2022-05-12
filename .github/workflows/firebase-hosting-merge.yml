@@ -21,6 +21,7 @@ jobs:
           fi
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entryPoint: /angular-recipe-book-app/angular-recipe-book-app/
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_RECIPE_BOOK_E8955 }}'
           channelId: live
