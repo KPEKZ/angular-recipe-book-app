@@ -1,7 +1,7 @@
 # angular-recipe-book-app
 ## Recipe book manager
 
-The app can create a recipe with ingredients and save in firebase
+The app can create a recipe with ingredients and save in firebase. The ingredients can be moved to shopping list. The app includes authorization by email.
 
 ### Main page
 
